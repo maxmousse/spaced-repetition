@@ -53,8 +53,10 @@ The spaced repetition learning application aims to revolutionize the way users e
 Basic tasks:
 
 - [x] Setup CI pipeline
-- Add rust support to the repository
-- Initialize the rust api
+- [x] Add rust support to the repository
+- [x] Initialize the rust api
+- Add graphql codegen
 - Setup prisma and database
+- Add pwa mode to angular
 
 Then, pick a feature and start working on it =)
