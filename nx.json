@@ -61,7 +61,8 @@
       "options": {
         "targetName": "lint"
       }
-    }
+    },
+    "@monodon/rust"
   ],
   "generators": {
     "@nx/angular:application": {
