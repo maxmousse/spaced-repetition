@@ -52,7 +52,7 @@ The spaced repetition learning application aims to revolutionize the way users e
 
 Basic tasks:
 
-- Setup CI pipeline
+- [x] Setup CI pipeline
 - Add rust support to the repository
 - Initialize the rust api
 - Setup prisma and database
