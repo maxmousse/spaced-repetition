@@ -9,6 +9,7 @@ actix-web = "4.5.1"
 async-graphql = "7.0.3"
 async-graphql-actix-web = "7.0.3"
 serde = "1.0.197"
+prisma_client = { path = "../../libs/prisma_client"}
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

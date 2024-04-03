@@ -1,2 +1,5 @@
 [build]
 target-dir = 'dist/target'
+
+[alias]
+prisma-generate-rust-client = "run -p prisma_generator generate"
