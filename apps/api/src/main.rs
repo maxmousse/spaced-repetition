@@ -21,6 +21,9 @@ async fn graphql_playground() -> Result<HttpResponse> {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    let prisma_client = prisma_client::new_client()
+        .await
+        .expect("Failed to connect to database");
     let schema = build_schema().await;
     HttpServer::new(move || {
         App::new()
