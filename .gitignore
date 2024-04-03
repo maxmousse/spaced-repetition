@@ -44,6 +44,9 @@ Thumbs.db
 # Generated files
 libs/prisma_client/src/prisma.rs
 schema.gql
+apps/**/*.graphql.ts
+libs/**/*.graphql.ts
+libs/graphql-types/src/lib/graphql-types.ts
 
 # Secret env variables
 .env
