@@ -2,7 +2,15 @@
 name = "api"
 version = "0.1.0"
 edition = "2021"
+default-run = "api"
 
+[[bin]]
+name = "generate"
+path = "src/generate.rs"
+
+[[bin]]
+name = "api"
+path = "src/api.rs"
 
 [dependencies]
 actix-web = "4.5.1"
