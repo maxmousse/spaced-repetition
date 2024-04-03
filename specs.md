@@ -55,8 +55,10 @@ Basic tasks:
 - [x] Setup CI pipeline
 - [x] Add rust support to the repository
 - [x] Initialize the rust api
-- Add graphql codegen
-- Setup prisma and database
+- [x] Setup prisma and database
+- [x] Add graphql codegen
 - Add pwa mode to angular
+- Add a complete README with setup instructions
+- Try to cache rust and generation artifacts with nx
 
 Then, pick a feature and start working on it =)

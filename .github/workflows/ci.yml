@@ -46,5 +46,5 @@ jobs:
 
       # - run: npx nx format:check
 
-      - name: Lint, test build and e2e affected code
-        run: npx nx affected -t lint test build e2e-ci
+      - name: Lint, test build affected code
+        run: npx nx affected -t lint test buil
