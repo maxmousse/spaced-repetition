@@ -3,6 +3,7 @@
 resolver = '2'
 members = [
 	'apps/api',
+	'libs/prisma_generator',
 ]
 
 [profile.release]
