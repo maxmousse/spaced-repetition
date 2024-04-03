@@ -41,5 +41,10 @@ jobs:
       - name: Setup nx shas
         uses: nrwl/nx-set-shas@v4
 
+      - name: Run code generation
+        run: npx nx run-many --target generate --all
+
       # - run: npx nx format:check
-      - run: npx nx affected -t lint test build e2e-ci
+
+      - name: Lint, test build and e2e affected code
+        run: npx nx affected -t lint test build e2e-ci
