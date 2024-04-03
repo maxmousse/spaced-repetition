@@ -51,7 +51,8 @@
           "buildTarget": "pwa:build:production"
         },
         "development": {
-          "buildTarget": "pwa:build:development"
+          "buildTarget": "pwa:build:development",
+          "proxyConfig": "{projectRoot}/proxy.conf.json"
         }
       },
       "defaultConfiguration": "development"
