@@ -1,0 +1,12 @@
+[package]
+name = "prisma_client"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "db"
+path = "src/prisma.rs"
+
+[dependencies]
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.11", default-features = false, features = [ "postgresql" ] }
+serde = "1.0.194"
