@@ -7,6 +7,8 @@ pub struct Query(UserQuery);
 
 pub type AppSchema = Schema<Query, EmptyMutation, EmptySubscription>;
 
-pub async fn build_schema() -> AppSchema {
-    Schema::build(Query::default(), EmptyMutation, EmptySubscription).finish()
+pub async fn build_schema(db: prisma_client::PrismaClient) -> AppSchema {
+    Schema::build(Query::default(), EmptyMutation, EmptySubscription)
+        .data(db)
+        .finish()
 }
