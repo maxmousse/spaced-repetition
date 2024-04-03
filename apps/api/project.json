@@ -51,7 +51,8 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": ["cargo run --package api --bin generate"]
-      }
+      },
+      "dependsOn": ["^generate"]
     }
   },
   "tags": []
