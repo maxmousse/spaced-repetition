@@ -345,6 +345,7 @@ dependencies = [
  "actix-web",
  "async-graphql",
  "async-graphql-actix-web",
+ "chrono",
  "prisma_client",
  "serde",
 ]
@@ -385,6 +386,7 @@ dependencies = [
  "async-trait",
  "base64 0.21.7",
  "bytes",
+ "chrono",
  "fast_chemail",
  "fnv",
  "futures-util",

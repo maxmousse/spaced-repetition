@@ -1,6 +1,6 @@
 # Specifications
 
-The spaced repetition learning application aims to revolutionize the way users engage with their study materials by leveraging scientifically proven techniques for effective memory retention. This application provides users with a versatile platform to create, organize, and review their study notes and question cards effortlessly. By utilizing Markdown formatting, users can craft rich and structured content tailored to their learning needs. The primary objective of the app is to optimize the learning process through spaced repetition, wherein users are prompted to review specific study materials at strategically spaced intervals to reinforce their memory and retention. Additionally, the app facilitates collaboration and knowledge sharing among users by allowing them to share their study topics, including notes and question cards, with others. With a user-friendly interface and powerful features, the spaced repetition learning app aims to empower users to maximize their learning potential and achieve their educational goals effectively.
+The spaced repetition learning application aims to enhance the way users engage with their study materials by leveraging scientifically proven techniques for effective memory retention. This application provides users with a versatile platform to create, organize, and review their study notes and question cards effortlessly. By utilizing Markdown formatting, users can craft rich and structured content tailored to their learning needs. The primary objective of the app is to optimize the learning process through spaced repetition, wherein users are prompted to review specific study materials at strategically spaced intervals to reinforce their memory and retention. Additionally, the app facilitates collaboration and knowledge sharing among users by allowing them to share their study topics, including notes and question cards, with others. With a user-friendly interface and powerful features, the spaced repetition learning app aims to empower users to maximize their learning potential and achieve their educational goals effectively.
 
 ## User stories
 
@@ -12,7 +12,7 @@ The spaced repetition learning application aims to revolutionize the way users e
 
 ### Note Management
 
-    - As a user, I want to create and edit notes using Markdown formatting.
+    - [x] As a user, I want to create and edit notes using Markdown formatting.
     - As a user, I want to organize my notes into different topics or categories.
     - As a user, I want to view, search, and filter my notes by topic or keyword.
 

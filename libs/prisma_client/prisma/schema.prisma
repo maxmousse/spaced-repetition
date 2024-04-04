@@ -1,18 +1,25 @@
-
 datasource db {
-    provider = "postgresql"
-    url      = env("POSTGRES_URL")
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
 }
 
 generator client {
-    provider      = "cargo prisma-generate-rust-client"
-    output        = "../src/prisma.rs"
+  provider = "cargo prisma-generate-rust-client"
+  output   = "../src/prisma.rs"
 }
 
 model User {
-    id          String  @id @default(uuid())
-    firstName String
-    lastName String
-    email String @unique
-    password String
+  id        String @id @default(uuid())
+  firstName String
+  lastName  String
+  email     String @unique
+  password  String
+}
+
+model Note {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+  title     String
+  content   String
 }

@@ -1,15 +1,15 @@
 use std::fs;
 
-use async_graphql::{EmptyMutation, EmptySubscription, Schema};
+use async_graphql::{EmptySubscription, Schema};
 
-use graphql::schema::Query;
+use graphql::schema::{Mutations, Queries};
 
 mod graphql;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     // Build schema
-    let schema_sdl = Schema::build(Query::default(), EmptyMutation, EmptySubscription)
+    let schema_sdl = Schema::build(Queries::default(), Mutations::default(), EmptySubscription)
         .finish()
         .sdl();
 

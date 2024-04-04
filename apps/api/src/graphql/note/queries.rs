@@ -1,17 +1,18 @@
-use super::types::User;
 use async_graphql::{Context, Object, Result};
 use prisma_client::PrismaClient;
 
+use super::types::Note;
+
 #[derive(Default, Clone)]
-pub struct UserQueries;
+pub struct NoteQueries;
 
 #[Object]
-impl UserQueries {
-    async fn get_users(&self, context: &Context<'_>) -> Result<Vec<User>> {
+impl NoteQueries {
+    async fn get_notes(&self, context: &Context<'_>) -> Result<Vec<Note>> {
         let db = context.data::<PrismaClient>().unwrap();
 
         Ok(db
-            .user()
+            .note()
             .find_many(vec![])
             .exec()
             .await?
