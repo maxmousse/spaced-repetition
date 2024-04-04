@@ -33,7 +33,11 @@
     "generate": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["cargo prisma-generate-rust-client"],
+        "commands": [
+          "cargo prisma-generate-rust-client",
+          "sed -i '1s/^/#[allow(warnings, unused)]/' src/prisma.rs"
+        ],
+        "parallel": false,
         "cwd": "libs/prisma_client"
       },
       "inputs": ["{projectRoot}/prisma/schema.prisma"],
