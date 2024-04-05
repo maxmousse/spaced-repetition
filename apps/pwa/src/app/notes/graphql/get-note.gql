@@ -1,0 +1,9 @@
+query getNote($input: GetNoteInput!) {
+  getNote(input: $input) {
+    id
+    createdAt
+    updatedAt
+    title
+    content
+  }
+}

@@ -5,10 +5,17 @@ import { map } from 'rxjs';
 import { GetUsersQuery } from './get-users.graphql';
 import { SidebarModule } from 'primeng/sidebar';
 import { MenubarModule } from 'primeng/menubar';
+import { NoteComponent } from './notes/note/note.component';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, CommonModule, SidebarModule, MenubarModule],
+  imports: [
+    RouterModule,
+    CommonModule,
+    SidebarModule,
+    MenubarModule,
+    NoteComponent,
+  ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
