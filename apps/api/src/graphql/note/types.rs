@@ -12,6 +12,11 @@ pub struct Note {
 }
 
 #[derive(InputObject)]
+pub struct GetNoteInput {
+    pub id: ID,
+}
+
+#[derive(InputObject)]
 pub struct CreateNoteInput {
     pub title: String,
     pub content: String,
@@ -19,12 +24,13 @@ pub struct CreateNoteInput {
 
 #[derive(InputObject)]
 pub struct UpdateNoteInput {
-    pub title: Option<String>,
-    pub content: Option<String>,
+    pub id: ID,
+    pub title: String,
+    pub content: String,
 }
 
 #[derive(InputObject)]
-pub struct DeleteNote {
+pub struct DeleteNoteInput {
     pub id: ID,
 }
 
