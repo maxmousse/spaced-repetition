@@ -6,6 +6,7 @@ import { GetUsersQuery } from './get-users.graphql';
 import { SidebarModule } from 'primeng/sidebar';
 import { MenubarModule } from 'primeng/menubar';
 import { NoteComponent } from './notes/note/note.component';
+import { NoteListComponent } from './notes/note-list/note-list.component';
 
 @Component({
   standalone: true,
@@ -15,6 +16,7 @@ import { NoteComponent } from './notes/note/note.component';
     SidebarModule,
     MenubarModule,
     NoteComponent,
+    NoteListComponent,
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
