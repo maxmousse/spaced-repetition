@@ -3,10 +3,12 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { map } from 'rxjs';
 import { GetUsersQuery } from './get-users.graphql';
+import { SidebarModule } from 'primeng/sidebar';
+import { MenubarModule } from 'primeng/menubar';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, SidebarModule, MenubarModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
