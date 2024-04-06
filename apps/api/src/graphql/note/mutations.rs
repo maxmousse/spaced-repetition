@@ -1,8 +1,8 @@
 use async_graphql::{Context, Object, Result};
 use chrono::Utc;
-use prisma_client::PrismaClient;
+use prisma_client::{note, PrismaClient};
 
-use super::types::{CreateNoteInput, Note};
+use super::types::{CreateNoteInput, Note, UpdateNoteInput};
 
 #[derive(Default, Clone)]
 pub struct NoteMutations {}
@@ -14,7 +14,36 @@ impl NoteMutations {
 
         Ok(db
             .note()
-            .create(Utc::now().into(), input.title, input.content, vec![])
+            .create_unchecked(Utc::now().into(), input.title, input.content, vec![])
+            .exec()
+            .await?
+            .into())
+    }
+
+    pub async fn update_note(&self, context: &Context<'_>, input: UpdateNoteInput) -> Result<Note> {
+        let db = context.data::<PrismaClient>().unwrap();
+
+        Ok(db
+            .note()
+            .update_unchecked(
+                note::id::equals(input.id.into()),
+                vec![
+                    note::updated_at::set(Utc::now().into()),
+                    note::title::set(input.title),
+                    note::content::set(input.content),
+                ],
+            )
+            .exec()
+            .await?
+            .into())
+    }
+
+    pub async fn delete_note(&self, context: &Context<'_>, input: UpdateNoteInput) -> Result<Note> {
+        let db = context.data::<PrismaClient>().unwrap();
+
+        Ok(db
+            .note()
+            .delete(note::id::equals(input.id.into()))
             .exec()
             .await?
             .into())

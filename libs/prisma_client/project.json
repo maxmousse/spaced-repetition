@@ -35,7 +35,7 @@
       "options": {
         "commands": [
           "cargo prisma-generate-rust-client",
-          "sed -i '1s/^/#[allow(warnings, unused)]/' src/prisma.rs"
+          "sed -i '1s/^/#[allow(warnings, unused)]\\n/' src/prisma.rs"
         ],
         "parallel": false,
         "cwd": "libs/prisma_client"
