@@ -1,3 +1,4 @@
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
@@ -9,6 +10,7 @@ import { InMemoryCache } from '@apollo/client/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAnimations(),
     provideRouter(appRoutes),
     importProvidersFrom(HttpClientModule),
     importProvidersFrom(ApolloModule),
