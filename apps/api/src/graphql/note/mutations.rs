@@ -14,7 +14,15 @@ impl NoteMutations {
 
         Ok(db
             .note()
-            .create_unchecked(Utc::now().into(), input.title, input.content, vec![])
+            .create_unchecked(
+                Utc::now().into(),
+                input.title,
+                input.content,
+                input.index,
+                input.course_id,
+                input.section_id,
+                vec![],
+            )
             .exec()
             .await?
             .into())

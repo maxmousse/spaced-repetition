@@ -20,6 +20,9 @@ pub struct GetNoteInput {
 pub struct CreateNoteInput {
     pub title: String,
     pub content: String,
+    pub index: i32,
+    pub course_id: String,
+    pub section_id: String,
 }
 
 #[derive(InputObject)]
