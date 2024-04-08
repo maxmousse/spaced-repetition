@@ -9,17 +9,76 @@ generator client {
 }
 
 model User {
-  id        String @id @default(uuid())
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+
   firstName String
   lastName  String
   email     String @unique
   password  String
+
+  courses Course[]
+}
+
+model Course {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+
+  title       String
+  description String?
+  authorId    String
+
+  author    User       @relation(fields: [authorId], references: [id])
+  sections  Section[]
+  notes     Note[]
+  questions Question[]
+}
+
+model Section {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+
+  title       String
+  description String?
+  courseId    String
+  index       Int
+
+  course Course @relation(fields: [courseId], references: [id])
+  notes  Note[]
+
+  @@unique([courseId, index])
 }
 
 model Note {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime
+
   title     String
   content   String
+  index     Int
+  courseId  String
+  sectionId String
+
+  course    Course     @relation(fields: [courseId], references: [id])
+  section   Section    @relation(fields: [sectionId], references: [id])
+  questions Question[]
+
+  @@unique([sectionId, index])
+}
+
+model Question {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+
+  content  String
+  courseId String
+  noteId   String?
+
+  course Course @relation(fields: [courseId], references: [id])
+  note   Note?  @relation(fields: [noteId], references: [id])
 }
