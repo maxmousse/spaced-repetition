@@ -1,8 +1,11 @@
-use async_graphql::{InputObject, SimpleObject, ID};
+use async_graphql::{ComplexObject, Context, InputObject, Result, SimpleObject, ID};
 use chrono::{DateTime, FixedOffset};
-use prisma_client::note;
+use prisma_client::{course, note, question, section, PrismaClient};
+
+use crate::graphql::{course::types::Course, question::types::Question, section::types::Section};
 
 #[derive(SimpleObject)]
+#[graphql(complex)]
 pub struct Note {
     pub id: ID,
     pub created_at: DateTime<FixedOffset>,
@@ -10,8 +13,58 @@ pub struct Note {
     pub title: String,
     pub content: String,
     pub index: i32,
+
+    #[graphql(skip)]
     pub course_id: String,
+
+    #[graphql(skip)]
     pub section_id: String,
+}
+
+#[ComplexObject]
+impl Note {
+    pub async fn course(&self, ctx: &Context<'_>) -> Result<Course> {
+        let db = ctx.data::<PrismaClient>().unwrap();
+
+        Ok(db
+            .course()
+            .find_unique(course::UniqueWhereParam::IdEquals(
+                self.course_id.clone().into(),
+            ))
+            .exec()
+            .await?
+            .unwrap()
+            .into())
+    }
+
+    pub async fn section(&self, ctx: &Context<'_>) -> Result<Section> {
+        let db = ctx.data::<PrismaClient>().unwrap();
+
+        Ok(db
+            .section()
+            .find_unique(section::UniqueWhereParam::IdEquals(
+                self.section_id.clone().into(),
+            ))
+            .exec()
+            .await?
+            .unwrap()
+            .into())
+    }
+
+    pub async fn questions(&self, ctx: &Context<'_>) -> Result<Vec<Question>> {
+        let db = ctx.data::<PrismaClient>().unwrap();
+
+        Ok(db
+            .question()
+            .find_many(vec![question::note_id::equals(Some(
+                self.id.clone().into(),
+            ))])
+            .exec()
+            .await?
+            .into_iter()
+            .map(|question| question.into())
+            .collect())
+    }
 }
 
 #[derive(InputObject)]
