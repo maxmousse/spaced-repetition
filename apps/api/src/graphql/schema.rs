@@ -1,5 +1,6 @@
 use async_graphql::{EmptySubscription, MergedObject, Schema};
 
+use super::authentication::AuthenticationMutations;
 use super::note::mutations::NoteMutations;
 use super::note::queries::NoteQueries;
 use super::user::queries::UserQueries;
@@ -8,7 +9,7 @@ use super::user::queries::UserQueries;
 pub struct Queries(UserQueries, NoteQueries);
 
 #[derive(MergedObject, Default, Clone)]
-pub struct Mutations(NoteMutations);
+pub struct Mutations(NoteMutations, AuthenticationMutations);
 
 pub type AppSchema = Schema<Queries, Mutations, EmptySubscription>;
 

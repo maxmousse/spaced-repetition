@@ -1,3 +1,4 @@
+pub mod authentication;
 pub mod course;
 pub mod note;
 pub mod question;
