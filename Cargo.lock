@@ -346,6 +346,7 @@ dependencies = [
  "async-graphql",
  "async-graphql-actix-web",
  "authentication_cookie",
+ "authentication_middleware",
  "chrono",
  "prisma_client",
  "serde",
@@ -515,6 +516,15 @@ name = "authentication_cookie"
 version = "0.1.0"
 dependencies = [
  "actix-web",
+]
+
+[[package]]
+name = "authentication_middleware"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "authentication_cookie",
+ "futures-util",
 ]
 
 [[package]]

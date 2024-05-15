@@ -1,0 +1,9 @@
+[package]
+name = "authentication_middleware"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = { workspace = true }
+futures-util = { workspace = true }
+authentication_cookie = { path = "../authentication_cookie" }

@@ -20,6 +20,7 @@ serde = "1.0.197"
 prisma_client = { path = "../../libs/prisma_client"}
 chrono = "0.4.37"
 authentication_cookie = {path = "../../libs/authentication_cookie"}
+authentication_middleware = {path = "../../libs/authentication_middleware"}
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

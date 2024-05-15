@@ -5,6 +5,7 @@ use actix_web::{
 };
 use async_graphql::http::graphiql_source;
 use async_graphql_actix_web::{GraphQLRequest, GraphQLResponse};
+use authentication_middleware::AuthenticationMiddleware;
 use graphql::schema::{build_schema, AppSchema};
 
 mod graphql;
@@ -24,10 +25,13 @@ async fn main() -> std::io::Result<()> {
     let db = prisma_client::new_client()
         .await
         .expect("Failed to connect to database");
+
     let schema = build_schema(db).await;
+
     HttpServer::new(move || {
         App::new()
             .app_data(Data::new(schema.clone()))
+            .wrap(AuthenticationMiddleware::new())
             .service(web::resource("/").guard(guard::Post()).to(grahpql_server))
             .service(
                 web::resource("/")
