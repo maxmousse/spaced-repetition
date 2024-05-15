@@ -13,12 +13,13 @@ name = "api"
 path = "src/api.rs"
 
 [dependencies]
-actix-web = "4.5.1"
+actix-web = { workspace = true }
 async-graphql = { "version" = "7.0.3", features = ["chrono"] }
 async-graphql-actix-web = "7.0.3"
 serde = "1.0.197"
 prisma_client = { path = "../../libs/prisma_client"}
 chrono = "0.4.37"
+authentication_cookie = {path = "../../libs/authentication_cookie"}
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

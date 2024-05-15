@@ -345,6 +345,7 @@ dependencies = [
  "actix-web",
  "async-graphql",
  "async-graphql-actix-web",
+ "authentication_cookie",
  "chrono",
  "prisma_client",
  "serde",
@@ -507,6 +508,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "67cd4b51d303cf3501c301e8125df442128d3c6d7c69f71b27833d253de47e77"
 dependencies = [
  "crossbeam-utils",
+]
+
+[[package]]
+name = "authentication_cookie"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
 ]
 
 [[package]]
