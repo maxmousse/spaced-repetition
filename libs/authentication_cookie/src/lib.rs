@@ -1,9 +1,9 @@
-use actix_web::{cookie::Cookie, HttpRequest};
+use actix_web::{cookie::Cookie, dev::ServiceRequest};
 const AUTHENTICATION_COOKIE_NAME: &str = "authenticated_user";
 
 /// Given a request, return the id of the user that is authenticated.
 pub fn get_authenticated_user_id_from_request(
-    req: &HttpRequest,
+    req: &ServiceRequest,
     _cookie_secret: &str,
 ) -> Option<String> {
     let cookie = req.cookie(AUTHENTICATION_COOKIE_NAME);

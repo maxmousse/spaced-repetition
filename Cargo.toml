@@ -7,11 +7,13 @@ members = [
 	'libs/prisma_client',
 	'libs/authentication_cookie',
 	'libs/authentication_middleware',
+	'libs/authentication_context',
 ]
 
 [workspace.dependencies]
 actix-web = '4.5.1'
 futures-util = '0.3.30'
+serde = "1.0.194"
 
 [profile.release]
 lto = true

@@ -1,4 +1,7 @@
+use std::sync::Arc;
+
 use async_graphql::{Context, Object, Result};
+use authentication_context::AuthenticationContext;
 use prisma_client::{note, PrismaClient};
 
 use super::types::{GetNoteInput, Note};
@@ -9,7 +12,7 @@ pub struct NoteQueries;
 #[Object]
 impl NoteQueries {
     async fn get_note(&self, context: &Context<'_>, input: GetNoteInput) -> Result<Option<Note>> {
-        let db = context.data::<PrismaClient>().unwrap();
+        let db = context.data::<Arc<PrismaClient>>().unwrap();
 
         Ok(db
             .note()
@@ -20,7 +23,9 @@ impl NoteQueries {
     }
 
     async fn get_notes(&self, context: &Context<'_>) -> Result<Vec<Note>> {
-        let db = context.data::<PrismaClient>().unwrap();
+        let db = context.data::<Arc<PrismaClient>>().unwrap();
+        let test1 = context.data::<Arc<AuthenticationContext>>();
+        println!("COUCOU NOTE RESOLVER {:?}", test1);
 
         Ok(db
             .note()

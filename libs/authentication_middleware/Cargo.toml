@@ -7,3 +7,5 @@ edition = "2021"
 actix-web = { workspace = true }
 futures-util = { workspace = true }
 authentication_cookie = { path = "../authentication_cookie" }
+authentication_context = { path = "../authentication_context" }
+prisma_client = { path = "../prisma_client"}

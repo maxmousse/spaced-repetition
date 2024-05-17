@@ -1,17 +1,13 @@
 use std::fs;
 
-use async_graphql::{EmptySubscription, Schema};
-
-use graphql::schema::{Mutations, Queries};
+use graphql::schema::get_schema_builder;
 
 mod graphql;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     // Build schema
-    let schema_sdl = Schema::build(Queries::default(), Mutations::default(), EmptySubscription)
-        .finish()
-        .sdl();
+    let schema_sdl = get_schema_builder().finish().sdl();
 
     // Write the schema in a file
     fs::write("schema.gql", schema_sdl).unwrap();
