@@ -12,6 +12,9 @@ use std::{
     sync::Arc,
 };
 
+/// Extract the authenticated user id from the request and build the authentication context
+///
+/// Authentication context is then inserted into the request extensions and available to the next service
 pub struct AuthenticationMiddleware {}
 
 impl AuthenticationMiddleware {
@@ -53,16 +56,22 @@ where
 
     fn call(&self, req: ServiceRequest) -> Self::Future {
         let service = self.service.clone();
+
+        // Get the authenticated user id from the request
         let authenticated_user_id = get_authenticated_user_id_from_request(&req, "cookie_secret");
 
         Box::pin(async move {
             let db = req.app_data::<web::Data<PrismaClient>>().unwrap();
+
+            // Build the authentication context from the authenticated user id
             let authentication_context =
                 get_authentication_context(&db, authenticated_user_id).await?;
 
+            // Insert the authentication context into the request extensions
             req.extensions_mut()
                 .insert::<Arc<AuthenticationContext>>(Arc::new(authentication_context));
 
+            // Call the next service
             let res = service.call(req).await?;
 
             Ok(res)

@@ -8,15 +8,18 @@ mod graphql;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    // Instantiate the database client
     let db = Arc::new(
         prisma_client::new_client()
             .await
             .expect("Failed to connect to database"),
     );
 
+    // Build the GraphQL schema
     let schema_builder = get_schema_builder();
     let schema = schema_builder.data(db.clone()).finish();
 
+    // Start the server
     HttpServer::new(move || {
         App::new()
             .app_data(web::Data::from(db.clone()))

@@ -6,7 +6,7 @@ mod graphql;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    // Build schema
+    // Build schema SDL
     let schema_sdl = get_schema_builder().finish().sdl();
 
     // Write the schema in a file

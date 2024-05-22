@@ -1,8 +1,10 @@
 use async_graphql::{ComplexObject, Context, Result, SimpleObject, ID};
 use chrono::{DateTime, FixedOffset};
-use prisma_client::{course, note, question, PrismaClient};
+use prisma_client::{course, note, question};
 
-use crate::graphql::{course::types::Course, note::types::Note};
+use crate::graphql::{
+    course::types::Course, note::types::Note, utils::context::unwrap_context_data,
+};
 
 #[derive(SimpleObject)]
 #[graphql(complex)]
@@ -22,7 +24,7 @@ pub struct Question {
 #[ComplexObject]
 impl Question {
     pub async fn course(&self, ctx: &Context<'_>) -> Result<Course> {
-        let db = ctx.data::<PrismaClient>().unwrap();
+        let (db, _) = unwrap_context_data(ctx);
 
         Ok(db
             .course()
@@ -36,7 +38,7 @@ impl Question {
     }
 
     pub async fn note(&self, ctx: &Context<'_>) -> Result<Option<Note>> {
-        let db = ctx.data::<PrismaClient>().unwrap();
+        let (db, _) = unwrap_context_data(ctx);
 
         match &self.note_id {
             None => return Ok(None),

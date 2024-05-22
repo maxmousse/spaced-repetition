@@ -1,8 +1,8 @@
 use async_graphql::{ComplexObject, Context, Result, SimpleObject, ID};
 use chrono::{DateTime, FixedOffset};
-use prisma_client::{course, user, PrismaClient};
+use prisma_client::{course, user};
 
-use crate::graphql::course::types::Course;
+use crate::graphql::{course::types::Course, utils::context::unwrap_context_data};
 
 #[derive(SimpleObject)]
 #[graphql(complex)]
@@ -18,7 +18,7 @@ pub struct User {
 #[ComplexObject]
 impl User {
     pub async fn courses(&self, ctx: &Context<'_>) -> Result<Vec<Course>> {
-        let db = ctx.data::<PrismaClient>().unwrap();
+        let (db, _) = unwrap_context_data(ctx);
 
         Ok(db
             .course()
