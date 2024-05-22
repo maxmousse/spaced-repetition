@@ -1,39 +1,10 @@
 use std::sync::Arc;
 
-use actix_web::{guard, web, App, HttpMessage, HttpRequest, HttpResponse, HttpServer, Result};
-use async_graphql::http::graphiql_source;
-use async_graphql_actix_web::{GraphQLRequest, GraphQLResponse};
-use authentication_context::AuthenticationContext;
+use actix_web::{guard, web, App, HttpServer};
 use authentication_middleware::AuthenticationMiddleware;
-use graphql::schema::{get_schema_builder, AppSchema};
+use graphql::{playground::graphql_playground, schema::get_schema_builder, server::graphql_server};
 
 mod graphql;
-
-/// Handler for GraphQL requests.
-async fn graphql_server(
-    http_req: HttpRequest,
-    schema: web::Data<AppSchema>,
-    gql: GraphQLRequest,
-) -> GraphQLResponse {
-    let authentication_context = http_req
-        .extensions()
-        .get::<Arc<AuthenticationContext>>()
-        .unwrap()
-        .clone();
-
-    println!("HELLO HELLO HELLO {:?}", authentication_context);
-
-    let gql_request = gql.into_inner().data(authentication_context);
-
-    schema.execute(gql_request).await.into()
-}
-
-/// Handler for GraphQL Playground.
-async fn graphql_playground() -> Result<HttpResponse> {
-    Ok(HttpResponse::Ok()
-        .content_type("text/html; charset=utf-8")
-        .body(graphiql_source("/", None)))
-}
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

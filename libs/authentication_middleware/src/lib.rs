@@ -60,8 +60,6 @@ where
             let authentication_context =
                 get_authentication_context(&db, authenticated_user_id).await?;
 
-            println!("COUCOU MIDDLEWARE {:?}", authentication_context);
-
             req.extensions_mut()
                 .insert::<Arc<AuthenticationContext>>(Arc::new(authentication_context));
 
