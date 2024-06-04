@@ -1,6 +1,10 @@
+pub mod authentication;
 pub mod course;
 pub mod note;
+pub mod playground;
 pub mod question;
 pub mod schema;
 pub mod section;
+pub mod server;
 pub mod user;
+pub mod utils;

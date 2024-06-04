@@ -1,5 +1,7 @@
 use async_graphql::{Context, Object, Result};
-use prisma_client::{note, PrismaClient};
+use prisma_client::note;
+
+use crate::graphql::utils::context::unwrap_context_data;
 
 use super::types::{GetNoteInput, Note};
 
@@ -8,8 +10,8 @@ pub struct NoteQueries;
 
 #[Object]
 impl NoteQueries {
-    async fn get_note(&self, context: &Context<'_>, input: GetNoteInput) -> Result<Option<Note>> {
-        let db = context.data::<PrismaClient>().unwrap();
+    async fn get_note(&self, ctx: &Context<'_>, input: GetNoteInput) -> Result<Option<Note>> {
+        let (db, _) = unwrap_context_data(ctx);
 
         Ok(db
             .note()
@@ -19,8 +21,8 @@ impl NoteQueries {
             .map(|n| n.into()))
     }
 
-    async fn get_notes(&self, context: &Context<'_>) -> Result<Vec<Note>> {
-        let db = context.data::<PrismaClient>().unwrap();
+    async fn get_notes(&self, ctx: &Context<'_>) -> Result<Vec<Note>> {
+        let (db, _) = unwrap_context_data(ctx);
 
         Ok(db
             .note()

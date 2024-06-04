@@ -1,6 +1,8 @@
 use async_graphql::{Context, Object, Result};
 use chrono::Utc;
-use prisma_client::{note, PrismaClient};
+use prisma_client::note;
+
+use crate::graphql::utils::context::unwrap_context_data;
 
 use super::types::{CreateNoteInput, Note, UpdateNoteInput};
 
@@ -9,8 +11,8 @@ pub struct NoteMutations {}
 
 #[Object]
 impl NoteMutations {
-    pub async fn create_note(&self, context: &Context<'_>, input: CreateNoteInput) -> Result<Note> {
-        let db = context.data::<PrismaClient>().unwrap();
+    pub async fn create_note(&self, ctx: &Context<'_>, input: CreateNoteInput) -> Result<Note> {
+        let (db, _) = unwrap_context_data(ctx);
 
         Ok(db
             .note()
@@ -28,8 +30,8 @@ impl NoteMutations {
             .into())
     }
 
-    pub async fn update_note(&self, context: &Context<'_>, input: UpdateNoteInput) -> Result<Note> {
-        let db = context.data::<PrismaClient>().unwrap();
+    pub async fn update_note(&self, ctx: &Context<'_>, input: UpdateNoteInput) -> Result<Note> {
+        let (db, _) = unwrap_context_data(ctx);
 
         Ok(db
             .note()
@@ -46,8 +48,8 @@ impl NoteMutations {
             .into())
     }
 
-    pub async fn delete_note(&self, context: &Context<'_>, input: UpdateNoteInput) -> Result<Note> {
-        let db = context.data::<PrismaClient>().unwrap();
+    pub async fn delete_note(&self, ctx: &Context<'_>, input: UpdateNoteInput) -> Result<Note> {
+        let (db, _) = unwrap_context_data(ctx);
 
         Ok(db
             .note()

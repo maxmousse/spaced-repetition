@@ -6,15 +6,15 @@ The spaced repetition learning application aims to enhance the way users engage 
 
 ### User Authentication and Onboarding
 
-    - As a new user, I want to be able to create an account and log in securely.
+    - As a new user, I want to be able to create an account
+    - As a user, I want to be able to log in securely.
     - As a user, I want to set up my profile with relevant information such as name and email.
-    - As a user, I want to receive a welcome message or tutorial on how to use the app effectively.
 
 ### Note Management
 
     - [x] As a user, I want to create and edit notes using Markdown formatting.
-    - As a user, I want to organize my notes into different topics or categories.
-    - As a user, I want to view, search, and filter my notes by topic or keyword.
+    - As a user, I want to organize my notes in courses and sections
+    - As a user, I want to view, search, and filter my notes
 
 ### Question Card Creation
 

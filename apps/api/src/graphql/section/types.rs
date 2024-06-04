@@ -1,8 +1,10 @@
 use async_graphql::{ComplexObject, Context, Result, SimpleObject, ID};
 use chrono::{DateTime, FixedOffset};
-use prisma_client::{course, note, section, PrismaClient};
+use prisma_client::{course, note, section};
 
-use crate::graphql::{course::types::Course, note::types::Note};
+use crate::graphql::{
+    course::types::Course, note::types::Note, utils::context::unwrap_context_data,
+};
 
 #[derive(SimpleObject)]
 #[graphql(complex)]
@@ -21,7 +23,7 @@ pub struct Section {
 #[ComplexObject]
 impl Section {
     pub async fn course(&self, ctx: &Context<'_>) -> Result<Course> {
-        let db = ctx.data::<PrismaClient>().unwrap();
+        let (db, _) = unwrap_context_data(ctx);
 
         Ok(db
             .course()
@@ -35,7 +37,7 @@ impl Section {
     }
 
     pub async fn notes(&self, ctx: &Context<'_>) -> Result<Vec<Note>> {
-        let db = ctx.data::<PrismaClient>().unwrap();
+        let (db, _) = unwrap_context_data(ctx);
 
         Ok(db
             .note()
