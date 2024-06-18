@@ -1,0 +1,9 @@
+[package]
+name = "authentication_password_strategy"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+password-auth = "1.0.0"
+prisma_client = { path = "../prisma_client" }
+prisma-client-rust = { workspace = true }

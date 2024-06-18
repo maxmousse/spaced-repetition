@@ -8,5 +8,6 @@ name = "prisma_client"
 path = "src/prisma.rs"
 
 [dependencies]
-prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.11", default-features = false, features = [ "postgresql" ] }
+prisma-client-rust = { workspace = true }
 serde = { workspace = true }
+
