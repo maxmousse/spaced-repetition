@@ -12,6 +12,10 @@ path = "src/generate.rs"
 name = "api"
 path = "src/api.rs"
 
+[[bin]]
+name = "seed"
+path = "src/seed.rs"
+
 [dependencies]
 actix-web = { workspace = true }
 async-graphql = { "version" = "7.0.3", features = ["chrono"] }
