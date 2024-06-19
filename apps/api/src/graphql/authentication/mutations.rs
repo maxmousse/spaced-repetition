@@ -14,8 +14,6 @@ impl AuthenticationMutations {
     pub async fn login(&self, ctx: &Context<'_>, input: LoginInput) -> Result<bool> {
         let (db, _) = unwrap_context_data(ctx);
 
-        let password_hash = hash_password(&input.password);
-
         let user_id = validate_user_credentials(&input.email, &input.password, db).await?;
 
         if let Some(user_id) = user_id {
