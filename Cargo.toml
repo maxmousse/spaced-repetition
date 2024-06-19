@@ -8,12 +8,14 @@ members = [
 	'libs/authentication_cookie',
 	'libs/authentication_middleware',
 	'libs/authentication_context',
+	'libs/authentication_password_strategy',
 ]
 
 [workspace.dependencies]
 actix-web = '4.5.1'
 futures-util = '0.3.30'
-serde = "1.0.194"
+serde = '1.0.194'
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.11", default-features = false, features = [ "postgresql" ] }
 
 [profile.release]
 lto = true

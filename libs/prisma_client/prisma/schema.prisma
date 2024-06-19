@@ -11,7 +11,7 @@ generator client {
 model User {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 
   firstName String
   lastName  String
@@ -24,7 +24,7 @@ model User {
 model Course {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 
   title       String
   description String?
@@ -39,7 +39,7 @@ model Course {
 model Section {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 
   title       String
   description String?
@@ -55,7 +55,7 @@ model Section {
 model Note {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 
   title     String
   content   String
@@ -73,7 +73,7 @@ model Note {
 model Question {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 
   content  String
   courseId String

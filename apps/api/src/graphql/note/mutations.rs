@@ -17,7 +17,6 @@ impl NoteMutations {
         Ok(db
             .note()
             .create_unchecked(
-                Utc::now().into(),
                 input.title,
                 input.content,
                 input.index,

@@ -20,6 +20,7 @@ Follow these steps to set up the project:
 - Create a `.env` file containing necessary environment variables in the root directory of the repository.
 - As the project relies on external software (such as a Postgres database), you can launch them using Docker Compose with `docker-compose up -d`.
 - During initial installation, initialize the database by pushing its schema with `npx prisma db push` (refer to the database section for further details).
+- Run the seed script to populate the database with dummy data using `npx prisma db seed`. The seed script is located in `apps/api/src/seed.rs`.
 - Start the API with `npx nx serve api`. It will be accessible at `http://localhost:8080`. Note that the project heavily relies on Nx. See the 'Project Structure' section for more information.
 - Launch the frontend with `npx nx serve pwa`. Access it at `http://localhost:4200`. Note that a development proxy is in place, making the API available at `http://localhost:4200/api` to mitigate CORS issues.
 - You're now all set to begin!

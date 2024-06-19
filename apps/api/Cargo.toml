@@ -12,6 +12,10 @@ path = "src/generate.rs"
 name = "api"
 path = "src/api.rs"
 
+[[bin]]
+name = "seed"
+path = "src/seed.rs"
+
 [dependencies]
 actix-web = { workspace = true }
 async-graphql = { "version" = "7.0.3", features = ["chrono"] }
@@ -19,9 +23,10 @@ async-graphql-actix-web = "7.0.3"
 serde = "1.0.197"
 prisma_client = { path = "../../libs/prisma_client"}
 chrono = "0.4.37"
-authentication_cookie = {path = "../../libs/authentication_cookie"}
-authentication_middleware = {path = "../../libs/authentication_middleware"}
-authentication_context = {path = "../../libs/authentication_context"}
+authentication_password_strategy = { path = "../../libs/authentication_password_strategy" }
+authentication_cookie = { path = "../../libs/authentication_cookie" }
+authentication_middleware = { path = "../../libs/authentication_middleware" }
+authentication_context = { path = "../../libs/authentication_context" }
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

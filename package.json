@@ -69,6 +69,7 @@
     "typescript": "~5.4.2"
   },
   "prisma": {
-    "schema": "libs/prisma_client/prisma/schema.prisma"
+    "schema": "libs/prisma_client/prisma/schema.prisma",
+    "seed": "cargo run --package api --bin seed"
   }
 }
