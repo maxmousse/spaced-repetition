@@ -1,10 +1,10 @@
 use async_graphql::{ComplexObject, Context, Result, SimpleObject, ID};
 use chrono::{DateTime, FixedOffset};
+use graphql_common::utils::context::unwrap_context_data;
 use prisma_client::{course, note, question, section, user};
 
 use crate::graphql::{
     note::types::Note, question::types::Question, section::types::Section, user::types::User,
-    utils::context::unwrap_context_data,
 };
 
 #[derive(SimpleObject)]

@@ -1,0 +1,35 @@
+{
+  "name": "graphql_common",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/graphql_common/src",
+  "targets": {
+    "build": {
+      "executor": "@monodon/rust:check",
+      "outputs": ["{options.target-dir}"],
+      "options": {
+        "target-dir": "dist/target/graphql_common"
+      }
+    },
+    "test": {
+      "executor": "@monodon/rust:test",
+      "outputs": ["{options.target-dir}"],
+      "options": {
+        "target-dir": "dist/target/graphql_common"
+      },
+      "configurations": {
+        "production": {
+          "release": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@monodon/rust:lint",
+      "outputs": ["{options.target-dir}"],
+      "options": {
+        "target-dir": "dist/target/graphql_common"
+      }
+    }
+  },
+  "tags": []
+}

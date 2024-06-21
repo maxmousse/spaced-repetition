@@ -1,0 +1,10 @@
+[package]
+name = "graphql_common"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-graphql = { workspace = true }
+prisma_client = { path = "../../libs/prisma_client"}
+prisma-client-rust = { workspace = true }
+authentication_context = { path = "../../libs/authentication_context" }

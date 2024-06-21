@@ -1,8 +1,7 @@
 use async_graphql::{Context, Object, Result};
 use prisma_client::note;
 
-use crate::graphql::utils::context::unwrap_context_data;
-
+use graphql_common::utils::context::unwrap_context_data;
 use super::types::{GetNoteInput, Note};
 
 #[derive(Default, Clone)]

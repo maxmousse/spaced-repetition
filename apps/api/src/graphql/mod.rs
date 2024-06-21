@@ -7,4 +7,3 @@ pub mod schema;
 pub mod section;
 pub mod server;
 pub mod user;
-pub mod utils;

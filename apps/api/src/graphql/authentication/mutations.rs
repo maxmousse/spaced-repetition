@@ -1,8 +1,7 @@
 use async_graphql::{Context, Object, Result};
 use authentication_cookie::new_authentication_cookie;
-use authentication_password_strategy::{hash_password, validate_user_credentials};
-
-use crate::graphql::utils::context::unwrap_context_data;
+use authentication_password_strategy::validate_user_credentials;
+use graphql_common::utils::context::unwrap_context_data;
 
 use super::inputs::LoginInput;
 
