@@ -1426,6 +1426,7 @@ version = "0.1.0"
 dependencies = [
  "async-graphql",
  "authentication_context",
+ "prisma-client-rust",
  "prisma_client",
 ]
 

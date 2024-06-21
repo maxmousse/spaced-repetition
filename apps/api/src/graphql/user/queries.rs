@@ -1,4 +1,5 @@
-use super::inputs::GetUsersInput;
+use crate::graphql::user::inputs::GetUsersInput;
+
 use graphql_common::utils::context::unwrap_context_data;
 
 use super::types::User;
@@ -12,10 +13,14 @@ pub struct UserQueries;
 impl UserQueries {
     async fn get_users(&self, ctx: &Context<'_>, input: GetUsersInput) -> Result<Vec<User>> {
         let (db, _) = unwrap_context_data(ctx);
+        let (filter, sort, page) = input.format();
 
         Ok(db
             .user()
-            .find_many(input.into_where_params())
+            .find_many(filter)
+            .order_by(sort)
+            .take(page.take)
+            .skip(page.skip)
             .exec()
             .await?
             .into_iter()
