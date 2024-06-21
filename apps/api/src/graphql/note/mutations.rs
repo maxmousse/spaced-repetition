@@ -2,9 +2,8 @@ use async_graphql::{Context, Object, Result};
 use chrono::Utc;
 use prisma_client::note;
 
-use crate::graphql::utils::context::unwrap_context_data;
-
 use super::types::{CreateNoteInput, Note, UpdateNoteInput};
+use graphql_common::utils::context::unwrap_context_data;
 
 #[derive(Default, Clone)]
 pub struct NoteMutations {}

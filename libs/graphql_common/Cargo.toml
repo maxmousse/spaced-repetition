@@ -4,5 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+async-graphql = { workspace = true }
+prisma_client = { path = "../../libs/prisma_client"}
+authentication_context = { path = "../../libs/authentication_context" }

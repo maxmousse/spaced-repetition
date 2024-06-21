@@ -350,6 +350,7 @@ dependencies = [
  "authentication_middleware",
  "authentication_password_strategy",
  "chrono",
+ "graphql_common",
  "prisma_client",
  "serde",
 ]
@@ -1417,6 +1418,15 @@ dependencies = [
  "combine",
  "indexmap 1.9.3",
  "thiserror",
+]
+
+[[package]]
+name = "graphql_common"
+version = "0.1.0"
+dependencies = [
+ "async-graphql",
+ "authentication_context",
+ "prisma_client",
 ]
 
 [[package]]
